@@ -9,6 +9,9 @@ function App() {
       <p>Ogrenci No: 235542017</p>
       <p>Bolum: Yazilim Muhendisligi</p>
       <p>Hobiler: Kod yazmak, teknoloji takibi</p>
+      <footer style={{ marginTop: '2rem', fontSize: '0.9rem', color: '#718096' }}>
+        &copy; 2026 Yavuz Selim Karaağaç. Tüm hakları saklıdır.
+      </footer>
     </div>
   )
 }
