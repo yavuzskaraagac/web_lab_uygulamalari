@@ -1,12 +1,12 @@
+@import './styles/tokens.css';
+
 #root {
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: var(--space-2xl);
   animation: fadeIn 0.8s ease-out;
+  font-size: var(--text-base);
 }
 
 @keyframes fadeIn {
@@ -22,18 +22,24 @@
 }
 
 header {
-  text-align: center;
-  margin-bottom: 2rem;
-  padding: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-xl);
+  padding: var(--space-md) var(--space-xl);
   background: var(--glass-bg);
   backdrop-filter: blur(10px);
   border: 1px solid var(--glass-border);
   border-radius: 16px;
   box-shadow: var(--glass-shadow);
+  position: sticky;
+  top: 10px;
+  z-index: 10;
 }
 
 header h1 {
-  font-size: 3rem;
+  font-size: var(--text-2xl);
   background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
   -webkit-background-clip: text;
   background-clip: text;
@@ -46,20 +52,28 @@ header h1 {
 nav ul {
   list-style: none;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  gap: 2rem;
+  gap: var(--space-md);
+  margin: 0;
+  padding: 0;
 }
 
 nav a {
+  display: inline-block;
   font-size: 1.1rem;
-  padding: 0.5rem 1rem;
+  padding: var(--space-xs) var(--space-md);
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.03);
   transition: all 0.3s ease;
+  color: var(--text-primary);
+  text-decoration: none;
 }
 
-nav a:hover {
-  background: rgba(255, 255, 255, 0.1);
+nav a:hover,
+nav a:focus {
+  background-color: var(--accent-color);
+  color: #fff;
   transform: translateY(-2px);
 }
 
@@ -74,7 +88,7 @@ section {
   backdrop-filter: blur(12px);
   border: 1px solid var(--glass-border);
   border-radius: 20px;
-  padding: 3rem;
+  padding: var(--space-xl) var(--space-md);
   box-shadow: var(--glass-shadow);
   transition: transform 0.3s ease;
 }
@@ -85,9 +99,9 @@ section:hover {
 }
 
 section h2 {
-  font-size: 2.2rem;
+  font-size: var(--text-xl);
   color: #fff;
-  margin-bottom: 2rem;
+  margin-bottom: var(--space-xl);
   position: relative;
   display: inline-block;
 }
@@ -103,36 +117,22 @@ section h2::after {
   border-radius: 2px;
 }
 
-figure {
+/* Hakkimda: tek sutun, ortalanmis (Mobil Varsayilan) */
+.about-content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 2rem 0;
-  gap: 1rem;
+  gap: var(--space-lg);
+  text-align: center;
 }
 
-figure img {
-  border-radius: 12px;
-  max-width: 100%;
-  height: auto;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: transform 0.4s ease;
+.about-content figure {
+  max-width: 200px;
 }
 
-figure img:hover {
-  transform: scale(1.02);
-}
-
-figcaption {
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.6);
-  font-style: italic;
-}
-
-#hakkimda img {
-  width: 250px;
-  height: 250px;
+.about-content img {
+  width: 100%;
+  aspect-ratio: 1;
   object-fit: cover;
   border-radius: 50%;
   border: 4px solid rgba(255, 255, 255, 0.1);
@@ -179,6 +179,23 @@ textarea:focus {
   background: rgba(0, 0, 0, 0.4);
 }
 
+button[type="submit"] {
+  width: 100%;
+  padding: var(--space-md) var(--space-lg);
+  background: var(--accent-color);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: var(--text-base);
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button[type="submit"]:hover,
+button[type="submit"]:focus {
+  background: var(--accent-hover);
+}
+
 footer {
   text-align: center;
   margin-top: 4rem;
@@ -187,36 +204,63 @@ footer {
   color: rgba(255, 255, 255, 0.5) !important;
 }
 
-/* Projects grid and articles */
-.projects-grid {
+/* ===== PROJE GRID ===== */
+.project-grid {
   display: grid;
+  /* Sihirli satir: otomatik responsive grid! */
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
+  gap: var(--space-xl);
 }
 
-.projects-grid article {
-  background: rgba(255, 255, 255, 0.05);
-  padding: 1.5rem;
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+/* ===== PROJE KARTI ===== */
+.project-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
   text-align: left;
-  transition: transform 0.3s;
 }
 
-.projects-grid article:hover {
-  transform: translateY(-3px);
-  background: rgba(255, 255, 255, 0.08);
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--glass-shadow);
 }
 
-.projects-grid article h3 {
-  margin-bottom: 0.5rem;
+/* Kart icindeki gorsel */
+.project-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Kart icerigi */
+.project-card h3,
+.project-card p,
+.project-card .skill-tags {
+  padding: 0 var(--space-lg);
+}
+
+.project-card h3 {
+  margin-top: var(--space-md);
+  font-size: var(--text-lg);
   color: #4facfe;
-  font-size: 1.4rem;
 }
 
-.projects-grid article p {
-  margin-bottom: 1rem;
+.project-card p {
   color: rgba(255, 255, 255, 0.8);
+  flex-grow: 1;
+  /* Icerik farkli uzunlukta olsa bile butonlar/etiketler asagida hizalanir */
+  margin-bottom: var(--space-sm);
+}
+
+.project-card .skill-tags {
+  padding-bottom: var(--space-lg);
+  margin-top: auto;
+  justify-content: flex-start;
 }
 
 /* Form ek stilleri */
@@ -278,22 +322,62 @@ select:focus {
   font-size: 1.1rem;
 }
 
-@media (max-width: 768px) {
-  #root {
-    padding: 1rem;
+/* Skill Tags */
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  list-style: none;
+  padding: 0;
+  margin-top: var(--space-md);
+  justify-content: center;
+}
+
+.skill-tags li {
+  background-color: var(--accent-color);
+  color: #fff;
+  padding: var(--space-xs) var(--space-md);
+  border-radius: 9999px;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* TABLET (640px ve uzeri) */
+@media (min-width: 640px) {
+  section {
+    padding: var(--space-2xl) var(--space-xl);
   }
 
-  header h1 {
-    font-size: 2rem;
+  .about-content {
+    flex-direction: row;
+    text-align: left;
+    align-items: flex-start;
+  }
+
+  .about-content figure {
+    flex-shrink: 0;
+  }
+
+  /* Form butonu tam genislik olmaktan cikar */
+  button[type="submit"] {
+    width: auto;
+  }
+}
+
+/* MASAUSTU (1024px ve uzeri) */
+@media (min-width: 1024px) {
+  #root {
+    max-width: 1200px;
+    margin: 0 auto;
   }
 
   section {
-    padding: 1.5rem;
+    padding: var(--space-3xl) var(--space-xl);
   }
 
-  nav ul {
-    flex-direction: column;
-    gap: 0.5rem;
-    align-items: center;
+  /* Proje kartlari en az 3 sutun */
+  .project-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
 }

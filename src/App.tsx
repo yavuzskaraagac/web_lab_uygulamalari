@@ -18,41 +18,47 @@ function App() {
       <main id="main-content">
         <section id="hakkimda">
           <h2>Hakkımda</h2>
-          <figure>
-            <img src="/profil.jpg" alt="Yavuz Selim Karaağaç'ın vesikalık fotoğrafı (Lazio formasıyla portre resmi)" />
-            <figcaption>Yavuz Selim Karaağaç</figcaption>
-          </figure>
-          <p>Merhaba, ben Yavuz Selim Karaağaç. Yazılım Mühendisliği bölümünde eğitim alıyorum. Web teknolojileri, yapay zeka ve yazılım mimarisi üzerine çalışıyorum.</p>
+          <div className="about-content">
+            <figure>
+              <img src="/profil.jpg" alt="Yavuz Selim Karaağaç'ın vesikalık fotoğrafı (Lazio formasıyla portre resmi)" />
+              <figcaption>Yavuz Selim Karaağaç</figcaption>
+            </figure>
+            <div className="about-text">
+              <p>Merhaba, ben Yavuz Selim Karaağaç. Yazılım Mühendisliği bölümünde eğitim alıyorum. Web teknolojileri, yapay zeka ve yazılım mimarisi üzerine çalışıyorum.</p>
 
-          <h3>Kullandığım Teknolojiler</h3>
-          <ul>
-            <li>HTML5 / CSS3 / JavaScript</li>
-            <li>React / TypeScript / Vite</li>
-            <li>Python / C#</li>
-            <li>Git & GitHub</li>
-          </ul>
+              <h3>Kullandığım Teknolojiler</h3>
+              <ul className="skill-tags" role="list" aria-label="Beceri etiketleri">
+                <li>HTML5 / CSS3 / JavaScript</li>
+                <li>React / TypeScript / Vite</li>
+                <li>Python / C#</li>
+                <li>Git & GitHub</li>
+              </ul>
+            </div>
+          </div>
         </section>
 
         <section id="projeler">
           <h2>Projelerim</h2>
-          <div className="projects-grid">
-            <article>
+          <div className="project-grid">
+            <article className="project-card">
+              <img src="/projeler.png" alt="web_lab_uygulamalari GitHub repo ekran görüntüsü" />
               <h3>web_lab_uygulamalari</h3>
               <p>İleri Düzey Web Programlama dersi uygulamalarının toplandığı depo.</p>
-              <p><strong>Teknolojiler:</strong> HTML, CSS, React</p>
-              <figure>
-                <img src="/projeler.png" alt="web_lab_uygulamalari GitHub repo ekran görüntüsü" />
-              </figure>
+              <ul className="skill-tags">
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>React</li>
+              </ul>
             </article>
 
-            <article>
+            <article className="project-card">
+              <img src="/projeler.png" alt="MaddeNet GitHub repo ekran görüntüsü" />
               <h3>MaddeNet</h3>
               <p>Özel geliştirilen bir algoritmik proje araştırması ve sunuş platformu.</p>
-              <p><strong>Teknolojiler:</strong> C#, .NET</p>
-              <figure>
-                {/* Fallback veya farklı görsel istenirse src güncellenebilir */}
-                <img src="/projeler.png" alt="MaddeNet GitHub repo ekran görüntüsü" />
-              </figure>
+              <ul className="skill-tags">
+                <li>C#</li>
+                <li>.NET</li>
+              </ul>
             </article>
           </div>
         </section>
