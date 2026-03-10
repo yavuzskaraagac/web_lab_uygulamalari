@@ -1,117 +1,138 @@
 import './App.css'
+import Button from './components/Button'
+import Input from './components/Input'
+import Card from './components/Card'
 
 function App() {
   return (
-    <>
-      <a href="#main-content" className="skip-link">Ana içeriğe atla</a>
-      <header>
-        <h1>Yavuz Selim Karaağaç - Web Laboratuvarı</h1>
-        <nav aria-label="Ana navigasyon">
-          <ul>
-            <li><a href="#hakkimda">Hakkımda</a></li>
-            <li><a href="#projeler">Projeler</a></li>
-            <li><a href="#iletisim">İletişim</a></li>
-          </ul>
-        </nav>
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors flex flex-col items-center">
+      {/* Dark mode Buton (Sayfada kalsin, navigasyon disi bagimsiz eklenti) */}
+      <button
+        onClick={() => document.documentElement.classList.toggle('dark')}
+        className="fixed top-20 right-4 z-50 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 p-2 rounded-full shadow-lg hover:scale-110 transition-transform"
+        aria-label="Tema degistir"
+      >
+        <span className="dark:hidden">&#9790;</span>
+        <span className="hidden dark:inline">&#9728;</span>
+      </button>
+
+      <a href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 bg-blue-800 text-white p-2 z-50">
+        Ana Icerige Atla
+      </a>
+
+      {/* Header ve Navigasyon */}
+      <header className="sticky top-0 z-40 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 w-full transition-colors">
+        <div className="max-w-6xl mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center gap-3">
+          <h1 className="text-xl font-bold text-blue-800 dark:text-blue-300">
+            Yavuz Selim Karaağaç
+          </h1>
+          <nav aria-label="Ana navigasyon">
+            <ul className="flex flex-wrap gap-2">
+              <li><a href="#hakkimda"
+                className="px-3 py-1 rounded-md text-gray-700 dark:text-gray-300 hover:bg-blue-100 dark:hover:bg-gray-800 transition-colors">
+                Hakkımda</a></li>
+              <li><a href="#projeler"
+                className="px-3 py-1 rounded-md text-gray-700 dark:text-gray-300 hover:bg-blue-100 dark:hover:bg-gray-800 transition-colors">
+                Projeler</a></li>
+              <li><a href="#iletisim"
+                className="px-3 py-1 rounded-md text-gray-700 dark:text-gray-300 hover:bg-blue-100 dark:hover:bg-gray-800 transition-colors">
+                İletişim</a></li>
+            </ul>
+          </nav>
+        </div>
       </header>
 
-      <main id="main-content">
-        <section id="hakkimda">
-          <h2>Hakkımda</h2>
-          <div className="about-content">
-            <figure>
-              <img src="/profil.jpg" alt="Yavuz Selim Karaağaç'ın vesikalık fotoğrafı (Lazio formasıyla portre resmi)" />
-              <figcaption>Yavuz Selim Karaağaç</figcaption>
+      <main id="main-content" className="w-full">
+        {/* Hakkımda Bölümü */}
+        <section id="hakkimda" className="py-16 px-4 w-full">
+          <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center md:items-start gap-8">
+            <figure className="shrink-0">
+              <img src="/profil.jpg"
+                alt="Yavuz Selim Karaağaç vesikalık fotoğrafı"
+                className="w-40 h-40 rounded-full object-cover shadow-lg" />
             </figure>
-            <div className="about-text">
-              <p>Merhaba, ben Yavuz Selim Karaağaç. Yazılım Mühendisliği bölümünde eğitim alıyorum. Web teknolojileri, yapay zeka ve yazılım mimarisi üzerine çalışıyorum.</p>
-
-              <h3>Kullandığım Teknolojiler</h3>
-              <ul className="skill-tags" role="list" aria-label="Beceri etiketleri">
-                <li>HTML5 / CSS3 / JavaScript</li>
-                <li>React / TypeScript / Vite</li>
-                <li>Python / C#</li>
-                <li>Git & GitHub</li>
+            <div>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4 text-center md:text-left transition-colors">
+                Hakkımda
+              </h2>
+              <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed transition-colors">
+                Yazılım Mühendisliği bölümünde eğitim alıyorum.
+                Full-stack geliştirici olarak modern web teknolojileriyle kullanıcı dostu arayüzler ve sağlam sistem mimarileri oluşturuyorum.
+              </p>
+              <ul className="flex flex-wrap gap-2">
+                <li className="bg-blue-800 text-white px-3 py-1 rounded-full text-sm">
+                  React</li>
+                <li className="bg-blue-800 text-white px-3 py-1 rounded-full text-sm">
+                  TypeScript</li>
+                <li className="bg-blue-800 text-white px-3 py-1 rounded-full text-sm">
+                  Tailwind</li>
+                <li className="bg-blue-800 text-white px-3 py-1 rounded-full text-sm">
+                  .NET / C#</li>
               </ul>
             </div>
           </div>
         </section>
 
-        <section id="projeler">
-          <h2>Projelerim</h2>
-          <div className="project-grid">
-            <article className="project-card">
-              <img src="/projeler.png" alt="web_lab_uygulamalari GitHub repo ekran görüntüsü" />
-              <h3>web_lab_uygulamalari</h3>
-              <p>İleri Düzey Web Programlama dersi uygulamalarının toplandığı depo.</p>
-              <ul className="skill-tags">
-                <li>HTML</li>
-                <li>CSS</li>
-                <li>React</li>
-              </ul>
-            </article>
+        {/* Projeler Bölümü */}
+        <section id="projeler" className="py-16 px-4 bg-gray-50 dark:bg-gray-900 w-full transition-colors">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-10 transition-colors">
+              Projelerim
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              <Card variant="elevated" title="E-Ticaret Platformu"
+                image="/projeler.png"
+                imageAlt="E-Ticaret anasayfa gorunumu">
+                React ve Node.js ile tam kapsamlı uygulama.
+              </Card>
 
-            <article className="project-card">
-              <img src="/projeler.png" alt="MaddeNet GitHub repo ekran görüntüsü" />
-              <h3>MaddeNet</h3>
-              <p>Özel geliştirilen bir algoritmik proje araştırması ve sunuş platformu.</p>
-              <ul className="skill-tags">
-                <li>C#</li>
-                <li>.NET</li>
-              </ul>
-            </article>
+              <Card variant="elevated" title="MaddeNet Zurna Mimarisi"
+                image="/projeler.png"
+                imageAlt="MaddeNet anasayfa gorunumu">
+                Algoritmik proje araştırması ve sunuş platformu. .NET ile.
+              </Card>
+
+              <Card variant="elevated" title="Web Laboratuvarı"
+                image="/projeler.png"
+                imageAlt="Web Lab anasayfa gorunumu">
+                Frontend teknolojileri araştırma ve deneme alanı. Tailwind ve React.
+              </Card>
+            </div>
           </div>
         </section>
 
-        <section id="iletisim">
-          <h2>İletişim</h2>
-          {/* form buraya */}
-          <form action="#" method="POST" noValidate>
-            <fieldset>
-              <legend>İletişim Formu</legend>
-
-              <div className="form-group">
-                <label htmlFor="name">Ad Soyad:</label>
-                <input type="text" id="name" name="name" required minLength={2} aria-describedby="name-error" />
-                <small id="name-error" className="error-msg" role="alert"></small>
+        {/* İletişim Formu */}
+        <section id="iletisim" className="py-16 px-4 w-full">
+          <div className="max-w-lg mx-auto">
+            <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-8 transition-colors">
+              İletişim
+            </h2>
+            <form className="space-y-4">
+              <Input id="name" label="Ad Soyad" required />
+              <Input id="email" label="E-posta" type="email" required />
+              <div className="space-y-1">
+                <label htmlFor="message"
+                  className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Mesajınız
+                </label>
+                <textarea id="message" rows={5} required
+                  className="w-full px-3 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none dark:bg-gray-800 dark:text-gray-100 dark:border-gray-600 transition-colors">
+                </textarea>
               </div>
-
-              <div className="form-group">
-                <label htmlFor="email">E-posta:</label>
-                <input type="email" id="email" name="email" required aria-describedby="email-error" />
-                <small id="email-error" className="error-msg" role="alert"></small>
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="subject">Konu:</label>
-                <select id="subject" name="subject" required aria-describedby="subject-error">
-                  <option value="">-- Seçiniz --</option>
-                  <option value="is">İş Teklifi</option>
-                  <option value="soru">Soru</option>
-                  <option value="oneri">Öneri</option>
-                </select>
-                <small id="subject-error" className="error-msg" role="alert"></small>
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="message">Mesajınız:</label>
-                <textarea id="message" name="message" rows={5} required minLength={10} aria-describedby="message-error"></textarea>
-                <small id="message-error" className="error-msg" role="alert"></small>
-              </div>
-
-              <button type="submit">Gönder</button>
-            </fieldset>
-          </form>
+              <Button variant="primary" size="lg" type="submit">
+                Gönder
+              </Button>
+            </form>
+          </div>
         </section>
       </main>
 
-      <footer style={{ marginTop: '20px', padding: '10px 0', borderTop: '1px solid #ccc' }}>
+      {/* Footer */}
+      <footer className="bg-gray-100 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 text-center py-6 px-4 text-gray-500 dark:text-gray-400 text-sm w-full transition-colors mt-auto">
         <p>&copy; 2026 Yavuz Selim Karaağaç. Tüm hakları saklıdır.</p>
-        <div className="social-links" style={{ marginTop: '10px' }}>
-          <a href="https://github.com/yavuzskaraagac" target="_blank" rel="noopener noreferrer">GitHub Profilim</a>
-        </div>
       </footer>
-    </>
+    </div>
   )
 }
 
