@@ -35,24 +35,26 @@ function App() {
 
         <section id="projeler">
           <h2>Projelerim</h2>
-          <div className="projects-grid">
-            <article>
+          <div className="project-grid">
+            <article className="project-card">
+              <img src="/projeler.png" alt="web_lab_uygulamalari GitHub repo ekran görüntüsü" />
               <h3>web_lab_uygulamalari</h3>
               <p>İleri Düzey Web Programlama dersi uygulamalarının toplandığı depo.</p>
-              <p><strong>Teknolojiler:</strong> HTML, CSS, React</p>
-              <figure>
-                <img src="/projeler.png" alt="web_lab_uygulamalari GitHub repo ekran görüntüsü" />
-              </figure>
+              <ul className="skill-tags">
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>React</li>
+              </ul>
             </article>
 
-            <article>
+            <article className="project-card">
+              <img src="/projeler.png" alt="MaddeNet GitHub repo ekran görüntüsü" />
               <h3>MaddeNet</h3>
               <p>Özel geliştirilen bir algoritmik proje araştırması ve sunuş platformu.</p>
-              <p><strong>Teknolojiler:</strong> C#, .NET</p>
-              <figure>
-                {/* Fallback veya farklı görsel istenirse src güncellenebilir */}
-                <img src="/projeler.png" alt="MaddeNet GitHub repo ekran görüntüsü" />
-              </figure>
+              <ul className="skill-tags">
+                <li>C#</li>
+                <li>.NET</li>
+              </ul>
             </article>
           </div>
         </section>
