@@ -2,9 +2,6 @@
 
 #root {
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: var(--space-xl);
   display: flex;
   flex-direction: column;
   gap: var(--space-2xl);
@@ -91,7 +88,7 @@ section {
   backdrop-filter: blur(12px);
   border: 1px solid var(--glass-border);
   border-radius: 20px;
-  padding: var(--space-xl);
+  padding: var(--space-xl) var(--space-md);
   box-shadow: var(--glass-shadow);
   transition: transform 0.3s ease;
 }
@@ -120,36 +117,22 @@ section h2::after {
   border-radius: 2px;
 }
 
-figure {
+/* Hakkimda: tek sutun, ortalanmis (Mobil Varsayilan) */
+.about-content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 2rem 0;
-  gap: 1rem;
+  gap: var(--space-lg);
+  text-align: center;
 }
 
-figure img {
-  border-radius: 12px;
-  max-width: 100%;
-  height: auto;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: transform 0.4s ease;
+.about-content figure {
+  max-width: 200px;
 }
 
-figure img:hover {
-  transform: scale(1.02);
-}
-
-figcaption {
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.6);
-  font-style: italic;
-}
-
-#hakkimda img {
-  width: 250px;
-  height: 250px;
+.about-content img {
+  width: 100%;
+  aspect-ratio: 1;
   object-fit: cover;
   border-radius: 50%;
   border: 4px solid rgba(255, 255, 255, 0.1);
@@ -194,6 +177,23 @@ textarea:focus {
   border-color: var(--accent-color);
   box-shadow: 0 0 10px rgba(100, 108, 255, 0.3);
   background: rgba(0, 0, 0, 0.4);
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: var(--space-md) var(--space-lg);
+  background: var(--accent-color);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: var(--text-base);
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button[type="submit"]:hover,
+button[type="submit"]:focus {
+  background: var(--accent-hover);
 }
 
 footer {
@@ -343,35 +343,41 @@ select:focus {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-@media (max-width: 768px) {
+/* TABLET (640px ve uzeri) */
+@media (min-width: 640px) {
+  section {
+    padding: var(--space-2xl) var(--space-xl);
+  }
+
+  .about-content {
+    flex-direction: row;
+    text-align: left;
+    align-items: flex-start;
+  }
+
+  .about-content figure {
+    flex-shrink: 0;
+  }
+
+  /* Form butonu tam genislik olmaktan cikar */
+  button[type="submit"] {
+    width: auto;
+  }
+}
+
+/* MASAUSTU (1024px ve uzeri) */
+@media (min-width: 1024px) {
   #root {
-    padding: var(--space-md);
-  }
-
-  header {
-    flex-direction: column;
-    text-align: center;
-    gap: var(--space-md);
-  }
-
-  header h1 {
-    font-size: var(--text-2xl);
+    max-width: 1200px;
+    margin: 0 auto;
   }
 
   section {
-    padding: var(--space-lg);
+    padding: var(--space-3xl) var(--space-xl);
   }
 
-  nav ul {
-    flex-direction: column;
-    gap: var(--space-sm);
-    align-items: center;
-    width: 100%;
-  }
-
-  nav a {
-    display: block;
-    text-align: center;
-    width: 100%;
+  /* Proje kartlari en az 3 sutun */
+  .project-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
