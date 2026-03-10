@@ -26,6 +26,7 @@
 
 header {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   margin-bottom: var(--space-xl);
@@ -35,6 +36,9 @@ header {
   border: 1px solid var(--glass-border);
   border-radius: 16px;
   box-shadow: var(--glass-shadow);
+  position: sticky;
+  top: 10px;
+  z-index: 10;
 }
 
 header h1 {
@@ -51,6 +55,7 @@ header h1 {
 nav ul {
   list-style: none;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   gap: var(--space-md);
   margin: 0;
@@ -58,15 +63,20 @@ nav ul {
 }
 
 nav a {
+  display: inline-block;
   font-size: 1.1rem;
-  padding: 0.5rem 1rem;
+  padding: var(--space-xs) var(--space-md);
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.03);
   transition: all 0.3s ease;
+  color: var(--text-primary);
+  text-decoration: none;
 }
 
-nav a:hover {
-  background: rgba(255, 255, 255, 0.1);
+nav a:hover,
+nav a:focus {
+  background-color: var(--accent-color);
+  color: #fff;
   transform: translateY(-2px);
 }
 
@@ -285,6 +295,27 @@ select:focus {
   font-size: 1.1rem;
 }
 
+/* Skill Tags */
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  list-style: none;
+  padding: 0;
+  margin-top: var(--space-md);
+  justify-content: center;
+}
+
+.skill-tags li {
+  background-color: var(--accent-color);
+  color: #fff;
+  padding: var(--space-xs) var(--space-md);
+  border-radius: 9999px;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
 @media (max-width: 768px) {
   #root {
     padding: var(--space-md);
@@ -308,5 +339,12 @@ select:focus {
     flex-direction: column;
     gap: var(--space-sm);
     align-items: center;
+    width: 100%;
+  }
+
+  nav a {
+    display: block;
+    text-align: center;
+    width: 100%;
   }
 }
